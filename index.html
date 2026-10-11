@@ -11,10 +11,10 @@
 :root{
   --navy:#092b40;--navy-soft:#24495d;--terracotta:#a64b2a;--gold:#c3a064;--gold-ink:#806026;
   --ivory:#faf7f2;--ivory-shade:#eee6da;--green:#356d5b;--ink:#142f40;--paper:#fffdfa;--line:#092b40;
-  --fd:"Bricolage Grotesque",sans-serif;--fb:"Space Grotesk",sans-serif;
+  --header-height:104px;--fd:"Bricolage Grotesque",sans-serif;--fb:"Space Grotesk",sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height) + 16px)}
 body{font-family:var(--fb);background:var(--ivory);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -22,10 +22,9 @@ h1,h2,h3,h4{font-family:var(--fd);line-height:.98;letter-spacing:-.02em;font-wei
 .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
 .stitch{height:14px;width:100%;background-image:repeating-linear-gradient(90deg,var(--navy) 0 18px,transparent 18px 30px);background-size:30px 3px;background-repeat:repeat-x;background-position:center}
 header{position:sticky;top:0;z-index:200;background:var(--ivory);border-bottom:3px solid var(--navy)}
-nav{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1240px;margin:0 auto;padding:0 28px}
-.logo{font-family:var(--fd);font-weight:800;font-size:1.5rem;letter-spacing:-.04em;color:var(--navy);display:flex;align-items:center;gap:2px}
-.logo b{color:var(--gold-ink);font-weight:800}
-.logo .knot{display:inline-block;width:16px;height:16px;margin-left:4px;background:var(--gold);border:2.5px solid var(--navy);transform:rotate(45deg)}
+nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-height);max-width:1240px;margin:0 auto;padding:0 28px}
+.logo{display:inline-flex;align-items:center;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden}
+.logo img{width:82px;height:84px;object-fit:contain}
 .navlinks{display:flex;gap:24px;align-items:center;font-size:.92rem;font-weight:500}
 .navlinks a{color:var(--navy);position:relative;padding:4px 0}
 .navlinks a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--terracotta);transition:width .25s}
@@ -149,7 +148,7 @@ section.block{padding:90px 0;position:relative}
 .collab-side li::before{content:"→ ";color:var(--gold);font-weight:700}
 footer{background:var(--navy);color:var(--ivory);padding:70px 0 28px}
 .foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:48px}
-.foot-brand .logo{color:var(--ivory)}.foot-brand .logo b{color:var(--gold)}
+.foot-brand .logo img{width:157px;height:160px}
 .foot-brand p{color:rgba(250,247,242,.7);margin-top:16px;max-width:30ch;font-size:.95rem}
 footer h4{font-family:var(--fb);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 footer ul{list-style:none}
@@ -163,6 +162,7 @@ footer li a:hover{color:var(--ivory)}
 .foot-bottom .final{font-family:var(--fd);font-weight:700;color:var(--gold)}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
+@media(max-width:1100px){.navlinks{display:none}.burger{display:flex}}
 @media(max-width:960px){
   .hero-inner{grid-template-columns:1fr}
   .about-grid,.collab-inner{grid-template-columns:1fr;gap:36px}
@@ -172,6 +172,7 @@ footer li a:hover{color:var(--ivory)}
   .act.big,.act.sm,.act.md{grid-column:span 12}
 }
 @media(max-width:640px){
+  :root{--header-height:96px}
   .navlinks{display:none}
   .burger{display:flex}
   .part-grid,.team-grid,.foot-top{grid-template-columns:1fr}
@@ -180,13 +181,14 @@ footer li a:hover{color:var(--ivory)}
   section.block{padding:60px 0}
   .hero{padding:44px 0 30px}
 }
+@media(max-width:440px){nav{padding:0 16px}.nav-right{gap:8px}.lang button{padding:6px 8px}.nav-right>.btn{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <header>
   <nav>
-    <a href="#home" class="logo">Bidra<b>Lab</b><span class="knot"></span></a>
+    <a href="#home" class="logo"><img src="assets/bidralab-logo.jpg" alt="BidraLab Forening" width="245" height="250"></a>
     <div class="navlinks">
       <a href="#about" data-t="nav_about">Sobre nosotros</a>
       <a href="#activities" data-t="nav_act">Actividades</a>
@@ -199,6 +201,7 @@ footer li a:hover{color:var(--ivory)}
       <div class="lang">
         <button data-lang="no">NO</button>
         <button data-lang="en">EN</button>
+        <button data-lang="pl" aria-label="Polski">PL</button>
         <button data-lang="es" class="active">ES</button>
       </div>
       <a href="#participate" class="btn" data-t="nav_join">Únete</a>
@@ -263,13 +266,13 @@ footer li a:hover{color:var(--ivory)}
       <p class="sec-p" data-t="act_p">Cada actividad es una puerta de entrada a la comunidad. Social, cercana, viva.</p>
     </div>
     <div class="act-list reveal">
-      <div class="act big"><span class="num">01</span><span class="tag" data-t="t_lang">Idioma</span><div><h3>Spansk i Gjesdal 2.0</h3><p data-t="a1">Aprende y practica español de una forma social e interactiva.</p></div></div>
-      <div class="act sm rust"><span class="num">02</span><span class="tag" data-t="t_dance">Baile</span><div><h3>Salsaklubb</h3><p data-t="a2">Ritmo, movimiento y buena compañía.</p></div></div>
-      <div class="act md"><span class="num">03</span><span class="tag" data-t="t_dance">Baile</span><div><h3>Kizomba Social</h3><p data-t="a3">Encuentros para todos los niveles.</p></div></div>
-      <div class="act md saff"><span class="num">04</span><span class="tag" data-t="t_dance">Baile</span><div><h3>Orientalsk dans</h3><p data-t="a4">Danza oriental, expresión y cultura.</p></div></div>
-      <div class="act md"><span class="num">05</span><span class="tag" data-t="t_kids">Niños</span><div><h3>Musikk og bevegelse</h3><p data-t="a5">Música y movimiento para los más pequeños.</p></div></div>
-      <div class="act sm"><span class="num">06</span><span class="tag" data-t="t_cafe">Multicultural</span><div><h3>Språkkafé</h3><p data-t="a6">¿Qué idioma quieres enseñar? ¿Cuál deseas aprender?</p></div></div>
-      <div class="act sm"><span class="num">07</span><span class="tag" data-t="t_care">Familia</span><div><h3>Barnepass</h3><p data-t="a7">Cuidado de niños durante las actividades.</p></div></div>
+      <div class="act big"><span class="num">01</span><span class="tag" data-t="t_lang">Idioma</span><div><h3 data-t="act_spanish">Spansk i Gjesdal 2.0</h3><p data-t="a1">Aprende y practica español de una forma social e interactiva.</p></div></div>
+      <div class="act sm rust"><span class="num">02</span><span class="tag" data-t="t_dance">Baile</span><div><h3 data-t="act_salsa">Salsaklubb</h3><p data-t="a2">Ritmo, movimiento y buena compañía.</p></div></div>
+      <div class="act md"><span class="num">03</span><span class="tag" data-t="t_dance">Baile</span><div><h3 data-t="act_kizomba">Kizomba Social</h3><p data-t="a3">Encuentros para todos los niveles.</p></div></div>
+      <div class="act md saff"><span class="num">04</span><span class="tag" data-t="t_dance">Baile</span><div><h3 data-t="act_oriental">Orientalsk dans</h3><p data-t="a4">Danza oriental, expresión y cultura.</p></div></div>
+      <div class="act md"><span class="num">05</span><span class="tag" data-t="t_kids">Niños</span><div><h3 data-t="act_music">Musikk og bevegelse</h3><p data-t="a5">Música y movimiento para los más pequeños.</p></div></div>
+      <div class="act sm"><span class="num">06</span><span class="tag" data-t="t_cafe">Multicultural</span><div><h3 data-t="act_cafe">Språkkafé</h3><p data-t="a6">¿Qué idioma quieres enseñar? ¿Cuál deseas aprender?</p></div></div>
+      <div class="act sm"><span class="num">07</span><span class="tag" data-t="t_care">Familia</span><div><h3 data-t="act_childcare">Barnepass</h3><p data-t="a7">Cuidado de niños durante las actividades.</p></div></div>
     </div>
   </div>
 </section>
@@ -324,9 +327,9 @@ footer li a:hover{color:var(--ivory)}
       <h2 class="sec-h" data-t="ev_h">Nos vemos pronto</h2>
     </div>
     <div class="reveal">
-      <div class="evt"><div class="date"><div class="d">14</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3>Flerkulturell språkkafé</h3><p data-t="ev1">18:00 · Gjesdal · Trae un idioma, llévate otro.</p></div><a href="#contact" class="btn alt" data-t="ev_more">Más info</a></div>
-      <div class="evt"><div class="date"><div class="d">21</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3>Salsaklubb i Gjesdal</h3><p data-t="ev2">20:00 · Gjesdal · Todos los niveles bienvenidos.</p></div><a href="#contact" class="btn alt" data-t="ev_more">Más info</a></div>
-      <div class="evt"><div class="date"><div class="d">28</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3>Spansk i Gjesdal 2.0</h3><p data-t="ev3">17:30 · Gjesdal · Español de forma cercana.</p></div><a href="#contact" class="btn alt" data-t="ev_more">Más info</a></div>
+      <div class="evt"><div class="date"><div class="d">14</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3 data-t="event_cafe">Flerkulturell språkkafé</h3><p data-t="ev1">18:00 · Gjesdal · Trae un idioma, llévate otro.</p></div><a href="#contact" class="btn alt" data-t="ev_more">Más info</a></div>
+      <div class="evt"><div class="date"><div class="d">21</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3 data-t="event_salsa">Salsaklubb i Gjesdal</h3><p data-t="ev2">20:00 · Gjesdal · Todos los niveles bienvenidos.</p></div><a href="#contact" class="btn alt" data-t="ev_more">Más info</a></div>
+      <div class="evt"><div class="date"><div class="d">28</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3 data-t="act_spanish">Spansk i Gjesdal 2.0</h3><p data-t="ev3">17:30 · Gjesdal · Español de forma cercana.</p></div><a href="#contact" class="btn alt" data-t="ev_more">Más info</a></div>
     </div>
   </div>
 </section>
@@ -353,7 +356,7 @@ footer li a:hover{color:var(--ivory)}
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <a href="#home" class="logo">Bidra<b>Lab</b><span class="knot"></span></a>
+        <a href="#home" class="logo"><img src="assets/bidralab-logo.jpg" alt="BidraLab Forening" width="245" height="250"></a>
         <p data-t="foot_tag">Conectamos personas. Activamos ideas. Construimos comunidad.</p>
         <div class="socials">
           <a href="#" aria-label="Facebook">Fb</a>
@@ -375,7 +378,7 @@ footer li a:hover{color:var(--ivory)}
       </ul></div>
       <div><h4 data-t="foot_contact">Contacto</h4><ul>
         <li><a href="mailto:hei@bidralab.no">hei@bidralab.no</a></li>
-        <li><a href="#">Gjesdal, Norge</a></li>
+        <li><a href="#" data-t="location">Gjesdal, Norge</a></li>
       </ul></div>
     </div>
     <div class="foot-bottom">
@@ -386,17 +389,26 @@ footer li a:hover{color:var(--ivory)}
 </footer>
 <script>
 const T={
+ pl:{"nav_about": "O nas", "nav_act": "Zajęcia", "nav_contrib": "Wnieś swój wkład", "nav_part": "Weź udział", "nav_team": "Zespół", "nav_events": "Wydarzenia", "nav_join": "Dołącz", "hero_eyebrow": "Laboratorium wspólnego działania · Gjesdal", "hero_h1a": "Każdy z nas", "hero_h1b": "może coś", "hero_h1c": "wnieść.", "hero_sub": "Miejsce, w którym ludzie, wiedza, kultury i pomysły łączą się, by tworzyć społeczność.", "hero_cta1": "Dołącz do BidraLab", "hero_cta2": "Zobacz zajęcia", "v1": "Nawiązuj kontakty", "v2": "Uczestnicz", "v3": "Ucz się", "v4": "Dziel się", "v5": "Wnoś swój wkład", "side_band": "Kim jesteś?", "side1": "Osobą z okolicy, która chce poznać nowych ludzi", "side2": "Osobą, która chce pomagać i ma coś do zaoferowania", "side3": "Osobą, która niedawno przyjechała do Norwegii", "side4": "Osobą z pomysłem", "side5": "Firmą lub organizacją", "about_label": "O BidraLab", "about_h": "Nie pytamy, czego potrzebujesz. Pytamy, co potrafisz.", "def_word": "Bidra + Lab", "def_p": "„Bidra” po norwesku oznacza wnosić swój wkład. „Lab” to laboratorium: miejsce, w którym eksperymentujemy, tworzymy pomysły i szukamy rozwiązań. Laboratorium wspólnego działania.", "about_p": "Wychodzimy od prostej, ale ważnej myśli: każdy z nas może coś wnieść. Chcemy odkrywać talenty ludzi i wykorzystywać je dla dobra społeczności.", "ac1_h": "Dlaczego powstało BidraLab?", "ac1_p": "Aby tworzyć nowe możliwości uczestnictwa, korzystając z wiedzy, doświadczenia i umiejętności, które już mamy.", "ac2_h": "Nasza wizja", "ac2_p": "Miejsce spotkań dla ludzi, którzy inaczej być może nigdy by się nie poznali, aby mogli wspólnie coś stworzyć.", "act_label": "Zajęcia", "act_h": "Co robimy razem", "act_p": "Każde zajęcia to okazja, by dołączyć do społeczności. Spotykamy się, poznajemy i działamy razem.", "t_lang": "Język", "t_dance": "Taniec", "t_kids": "Dzieci", "t_cafe": "Wielokulturowość", "t_care": "Rodzina", "a1": "Ucz się hiszpańskiego i ćwicz go w towarzystwie innych, w sposób interaktywny.", "a2": "Rytm, ruch i dobre towarzystwo.", "a3": "Spotkania dla osób na każdym poziomie zaawansowania.", "a4": "Taniec orientalny, ekspresja i kultura.", "a5": "Muzyka i ruch dla najmłodszych.", "a6": "Jakiego języka chcesz uczyć innych? Jakiego chcesz się nauczyć?", "a7": "Opieka nad dziećmi podczas zajęć.", "con_label": "Wolontariat", "con_h": "Co możesz wnieść?", "con_p": "Każda osoba wnosi swoją nić. Razem tkamy społeczność. Zaznacz wszystko, co potrafisz lub co Cię interesuje — tak odkrywamy talenty, które już są wśród nas.", "con_hint": "Liczba wybranych nici:", "con_hint2": "— każda łączy się z zajęciami, projektem lub osobą.", "part_label": "Weź udział", "part_h": "Od gościa do członka społeczności", "part_p": "Wybierz, jak chcesz dołączyć. Każda ścieżka prowadzi do prostego formularza.", "pa1_h": "Weź udział w zajęciach", "pa1_p": "Przyjdź na spotkanie i poznaj nowych ludzi.", "pa2_h": "Dołącz do wolontariatu", "pa2_p": "Podziel się swoim czasem i umiejętnościami.", "pa3_h": "Dołącz jako członek", "pa3_p": "Zostań stałą częścią BidraLab.", "pa4_h": "Mam pomysł lub projekt", "pa4_p": "Opowiedz nam o nim — pomożemy Ci go rozwinąć.", "pa5_h": "Dziel się wiedzą", "pa5_p": "Naucz innych czegoś, co potrafisz.", "pa6_h": "Firma lub organizacja", "pa6_p": "Stwórzmy coś razem.", "team_label": "Ludzie", "team_h": "Społeczność tworzona przez prawdziwych ludzi", "team_p": "BidraLab to nie tylko pomysł. To ludzie, którzy tworzą je każdego dnia.", "r1": "Założycielka / koordynacja", "r2": "Projektowanie strony", "r3": "Komunikacja", "r4": "Fotografia", "m1": "Rozwija wizję i łączy ludzi.", "m2": "Kształtuje nasz wizerunek w sieci.", "m3": "Opowiada historie naszej społeczności.", "m4": "Uwiecznia chwile, które nas łączą.", "ev_label": "Nadchodzące wydarzenia", "ev_h": "Do zobaczenia wkrótce", "mon": "mar", "ev_more": "Więcej informacji", "ev1": "18:00 · Gjesdal · Podziel się swoim językiem i poznaj nowy.", "ev2": "20:00 · Gjesdal · Zapraszamy wszystkich, niezależnie od poziomu.", "ev3": "17:30 · Gjesdal · Hiszpański w przyjaznej i otwartej atmosferze.", "col_label": "Współpraca", "col_h": "Chcesz stworzyć coś razem z nami?", "col_p": "Firmy, organizacje, stowarzyszenia i instytucje: jest wiele sposobów, by wspólnie coś stworzyć.", "col_cta": "Porozmawiajmy", "col1": "Wspólne projekty", "col2": "Sponsoring", "col3": "Przestrzeń i zasoby", "col4": "Wiedza specjalistyczna", "col5": "Nowe inicjatywy", "foot_tag": "Łączymy ludzi. Wprowadzamy pomysły w życie. Budujemy społeczność.", "foot_explore": "Odkrywaj", "foot_join": "Dołącz", "foot_contact": "Kontakt", "foot_final": "Każdy z nas może coś wnieść.", "m_verbs": ["Nawiązuj kontakty", "Uczestnicz", "Ucz się", "Dziel się", "Wnoś swój wkład", "Każdy z nas może coś wnieść."]},
  es:{nav_about:"Sobre nosotros",nav_act:"Actividades",nav_contrib:"Aporta",nav_part:"Participa",nav_team:"Equipo",nav_events:"Eventos",nav_join:"Únete",hero_eyebrow:"Laboratorio de contribución · Gjesdal",hero_h1a:"Todos tenemos",hero_h1b:"algo que",hero_h1c:"aportar.",hero_sub:"Un espacio donde personas, conocimientos, culturas e ideas se entrelazan para crear comunidad.",hero_cta1:"Únete a BidraLab",hero_cta2:"Ver actividades",v1:"Conecta",v2:"Participa",v3:"Aprende",v4:"Comparte",v5:"Contribuye",side_band:"¿Qué eres tú aquí?",side1:"Vecino/a que quiere conocer gente",side2:"Voluntario/a con algo que ofrecer",side3:"Nuevo/a en Noruega",side4:"Alguien con una idea",side5:"Empresa u organización",about_label:"Sobre BidraLab",about_h:"No preguntamos qué necesitas. Preguntamos qué sabes hacer.",def_word:"Bidra + Lab",def_p:"«Bidra» significa contribuir en noruego. «Lab» es un laboratorio: un lugar donde se experimenta, se crean ideas y se buscan soluciones. Un laboratorio de contribución.",about_p:"Partimos de una idea sencilla pero poderosa: todos tenemos algo que aportar. Queremos descubrir el talento que ya existe entre las personas y conectarlo con la comunidad.",ac1_h:"¿Por qué nació?",ac1_p:"Para crear nuevas formas de participación aprovechando los conocimientos, experiencias y capacidades que ya existen entre nosotros.",ac2_h:"Nuestra visión",ac2_p:"Un punto de encuentro entre personas que quizás nunca se habrían conocido, para construir algo juntas.",act_label:"Actividades",act_h:"Cosas que hacemos juntos",act_p:"Cada actividad es una puerta de entrada a la comunidad. Social, cercana, viva.",t_lang:"Idioma",t_dance:"Baile",t_kids:"Niños",t_cafe:"Multicultural",t_care:"Familia",a1:"Aprende y practica español de una forma social e interactiva.",a2:"Ritmo, movimiento y buena compañía.",a3:"Encuentros para todos los niveles.",a4:"Danza oriental, expresión y cultura.",a5:"Música y movimiento para los más pequeños.",a6:"¿Qué idioma quieres enseñar? ¿Cuál deseas aprender?",a7:"Cuidado de niños durante las actividades.",con_label:"Voluntariado",con_h:"¿Qué puedes aportar?",con_p:"Cada persona trae un hilo. Juntos tejemos comunidad. Toca todo lo que sabes o te interesa — así descubrimos el talento que ya está aquí.",con_hint:"Has elegido",con_hint2:"hilos. Cada uno conecta con una actividad, un proyecto o una persona.",part_label:"Participa",part_h:"De visitante a comunidad",part_p:"Elige por dónde entrar. Cada camino lleva a un formulario sencillo.",pa1_h:"Participar en una actividad",pa1_p:"Únete a un encuentro y conoce gente nueva.",pa2_h:"Ser voluntario/a",pa2_p:"Comparte tu tiempo y tus capacidades.",pa3_h:"Hacerme miembro",pa3_p:"Forma parte de BidraLab de forma estable.",pa4_h:"Tengo una idea o proyecto",pa4_p:"Cuéntanosla y la hacemos crecer.",pa5_h:"Compartir conocimientos",pa5_p:"Enseña algo que sabes hacer.",pa6_h:"Empresa u organización",pa6_p:"Construyamos algo juntos.",team_label:"Personas",team_h:"Una comunidad hecha por personas reales",team_p:"BidraLab no es solo una idea. Son quienes la construyen cada día.",r1:"Fundadora / coordinación",r2:"Diseño web",r3:"Comunicación",r4:"Fotografía",m1:"Impulsa la visión y conecta a la comunidad.",m2:"Da forma a la identidad digital.",m3:"Cuenta las historias de la comunidad.",m4:"Captura los momentos que nos unen.",ev_label:"Próximos eventos",ev_h:"Nos vemos pronto",mon:"Mar",ev_more:"Más info",ev1:"18:00 · Gjesdal · Trae un idioma, llévate otro.",ev2:"20:00 · Gjesdal · Todos los niveles bienvenidos.",ev3:"17:30 · Gjesdal · Español de forma cercana.",col_label:"Colaboraciones",col_h:"¿Quieres construir algo con nosotros?",col_p:"Empresas, organizaciones, asociaciones e instituciones: hay muchas formas de tejer algo juntos.",col_cta:"Hablemos",col1:"Proyectos conjuntos",col2:"Patrocinio",col3:"Espacios y recursos",col4:"Conocimiento profesional",col5:"Nuevas iniciativas",foot_tag:"Conectamos personas. Activamos ideas. Construimos comunidad.",foot_explore:"Explora",foot_join:"Súmate",foot_contact:"Contacto",foot_final:"Todos tenemos algo que aportar.",m_verbs:["Conecta","Participa","Aprende","Comparte","Contribuye","Todos tenemos algo que aportar"]},
  no:{nav_about:"Om oss",nav_act:"Aktiviteter",nav_contrib:"Bidra",nav_part:"Delta",nav_team:"Teamet",nav_events:"Arrangementer",nav_join:"Bli med",hero_eyebrow:"Et laboratorium for bidrag · Gjesdal",hero_h1a:"Alle har",hero_h1b:"noe å",hero_h1c:"bidra med.",hero_sub:"Et sted der mennesker, kunnskap, kulturer og idéer flettes sammen for å skape fellesskap.",hero_cta1:"Bli med i BidraLab",hero_cta2:"Se aktiviteter",v1:"Koble",v2:"Delta",v3:"Lær",v4:"Del",v5:"Bidra",side_band:"Hvem er du?",side1:"Nabo som vil møte folk",side2:"Frivillig med noe å tilby",side3:"Ny i Norge",side4:"Noen med en idé",side5:"Bedrift eller organisasjon",about_label:"Om BidraLab",about_h:"Vi spør ikke hva du trenger. Vi spør hva du kan.",def_word:"Bidra + Lab",def_p:"«Bidra» betyr å bidra på norsk. «Lab» er et laboratorium: et sted der man eksperimenterer, skaper idéer og finner løsninger. Et laboratorium for bidrag.",about_p:"Vi starter med en enkel, men kraftfull idé: alle har noe å bidra med. Vi vil oppdage talentet som allerede finnes blant folk og koble det til fellesskapet.",ac1_h:"Hvorfor oppstod det?",ac1_p:"For å skape nye former for deltakelse ved å bruke kunnskapen, erfaringen og evnene som allerede finnes blant oss.",ac2_h:"Vår visjon",ac2_p:"Et møtested for mennesker som kanskje aldri ville ha møttes ellers, for å bygge noe sammen.",act_label:"Aktiviteter",act_h:"Ting vi gjør sammen",act_p:"Hver aktivitet er en inngang til fellesskapet. Sosialt, nært, levende.",t_lang:"Språk",t_dance:"Dans",t_kids:"Barn",t_cafe:"Flerkulturelt",t_care:"Familie",a1:"Lær spansk og øv på språket på en sosial og interaktiv måte.",a2:"Rytme, bevegelse og godt selskap.",a3:"Treff for alle nivåer.",a4:"Orientalsk dans, uttrykk og kultur.",a5:"Musikk og bevegelse for de minste.",a6:"Hvilket språk vil du lære bort? Hvilket vil du lære?",a7:"Barnepass under aktivitetene.",con_label:"Frivillighet",con_h:"Hva kan du bidra med?",con_p:"Hver person bringer en tråd. Sammen vever vi fellesskap. Trykk på alt du kan eller er interessert i — slik oppdager vi talentet som allerede er her.",con_hint:"Du har valgt",con_hint2:"tråder. Hver enkelt kobles til en aktivitet, et prosjekt eller en person.",part_label:"Delta",part_h:"Fra besøkende til en del av fellesskapet",part_p:"Velg din vei inn. Hver vei fører til et enkelt skjema.",pa1_h:"Delta på en aktivitet",pa1_p:"Bli med på et treff og møt nye folk.",pa2_h:"Bli frivillig",pa2_p:"Del tiden og evnene dine.",pa3_h:"Bli medlem",pa3_p:"Bli en fast del av BidraLab.",pa4_h:"Jeg har en idé eller et prosjekt",pa4_p:"Fortell oss om ideen eller prosjektet ditt – vi hjelper deg videre.",pa5_h:"Del kunnskap",pa5_p:"Lær bort noe du kan.",pa6_h:"Bedrift eller organisasjon",pa6_p:"La oss bygge noe sammen.",team_label:"Mennesker",team_h:"Et fellesskap bygget av ekte mennesker",team_p:"BidraLab er ikke bare en idé. Det er de som bygger det hver dag.",r1:"Grunnlegger / koordinering",r2:"Webdesign",r3:"Kommunikasjon",r4:"Foto",m1:"Utvikler visjonen og knytter mennesker sammen.",m2:"Former den digitale identiteten.",m3:"Forteller fellesskapets historier.",m4:"Fanger øyeblikkene som forener oss.",ev_label:"Kommende arrangementer",ev_h:"Vi ses snart",mon:"Mar",ev_more:"Mer info",ev1:"18:00 · Gjesdal · Ta med et språk, få et nytt.",ev2:"20:00 · Gjesdal · Alle er velkomne, uansett nivå.",ev3:"17:30 · Gjesdal · Spansk i et sosialt og inkluderende miljø.",col_label:"Samarbeid",col_h:"Vil du bygge noe med oss?",col_p:"Bedrifter, organisasjoner, foreninger og institusjoner: det finnes mange måter å veve noe sammen på.",col_cta:"La oss snakke",col1:"Felles prosjekter",col2:"Sponsing",col3:"Lokaler og ressurser",col4:"Faglig kunnskap",col5:"Nye initiativer",foot_tag:"Vi kobler mennesker. Vi vekker idéer. Vi bygger fellesskap.",foot_explore:"Utforsk",foot_join:"Bli med",foot_contact:"Kontakt",foot_final:"Alle har noe å bidra med.",m_verbs:["Koble","Delta","Lær","Del","Bidra","Alle har noe å bidra med"]},
  en:{nav_about:"About",nav_act:"Activities",nav_contrib:"Contribute",nav_part:"Participate",nav_team:"Team",nav_events:"Events",nav_join:"Join",hero_eyebrow:"A laboratory for contribution · Gjesdal",hero_h1a:"Everyone has",hero_h1b:"something to",hero_h1c:"contribute.",hero_sub:"A space where people, knowledge, cultures and ideas weave together to build community.",hero_cta1:"Join BidraLab",hero_cta2:"See activities",v1:"Connect",v2:"Participate",v3:"Learn",v4:"Share",v5:"Contribute",side_band:"What are you here?",side1:"A neighbour who wants to meet people",side2:"A volunteer with something to offer",side3:"New in Norway",side4:"Someone with an idea",side5:"A company or organization",about_label:"About BidraLab",about_h:"We don't ask what you need. We ask what you can do.",def_word:"Bidra + Lab",def_p:"“Bidra” means to contribute in Norwegian. “Lab” is a laboratory: a place to experiment, create ideas and find solutions. A laboratory for contribution.",about_p:"We start from a simple but powerful idea: everyone has something to contribute. We want to discover the talent that already exists among people and connect it to the community.",ac1_h:"Why it started",ac1_p:"To create new forms of participation by drawing on the knowledge, experience and skills that already exist among us.",ac2_h:"Our vision",ac2_p:"A meeting point for people who might never have met, to build something together.",act_label:"Activities",act_h:"Things we do together",act_p:"Every activity is a doorway into the community. Social, close, alive.",t_lang:"Language",t_dance:"Dance",t_kids:"Kids",t_cafe:"Multicultural",t_care:"Family",a1:"Learn and practice Spanish in a social, interactive way.",a2:"Rhythm, movement and good company.",a3:"Meetups for all levels.",a4:"Oriental dance, expression and culture.",a5:"Music and movement for the little ones.",a6:"Which language will you teach? Which do you want to learn?",a7:"Childcare during the activities.",con_label:"Volunteering",con_h:"What can you contribute?",con_p:"Everyone brings a thread. Together we weave community. Tap everything you know or are interested in — that's how we find the talent already here.",con_hint:"You've chosen",con_hint2:"threads. Each one connects to an activity, a project or a person.",part_label:"Participate",part_h:"From visitor to community",part_p:"Choose your way in. Each path leads to a simple form.",pa1_h:"Join an activity",pa1_p:"Come to a meetup and meet new people.",pa2_h:"Become a volunteer",pa2_p:"Share your time and your skills.",pa3_h:"Become a member",pa3_p:"Become a steady part of BidraLab.",pa4_h:"I have an idea or project",pa4_p:"Tell us and we'll help it grow.",pa5_h:"Share knowledge",pa5_p:"Teach something you know how to do.",pa6_h:"Company or organization",pa6_p:"Let's build something together.",team_label:"People",team_h:"A community built by real people",team_p:"BidraLab isn't just an idea. It's the people who build it every day.",r1:"Founder / coordination",r2:"Web design",r3:"Communication",r4:"Photography",m1:"Drives the vision and connects the community.",m2:"Shapes the digital identity.",m3:"Tells the community's stories.",m4:"Captures the moments that unite us.",ev_label:"Upcoming events",ev_h:"See you soon",mon:"Mar",ev_more:"More info",ev1:"6:00 PM · Gjesdal · Bring a language, take a new one.",ev2:"8:00 PM · Gjesdal · All levels welcome.",ev3:"5:30 PM · Gjesdal · Spanish, up close.",col_label:"Collaborations",col_h:"Want to build something with us?",col_p:"Companies, organizations, associations and institutions: there are many ways to weave something together.",col_cta:"Let's talk",col1:"Joint projects",col2:"Sponsorship",col3:"Spaces and resources",col4:"Professional knowledge",col5:"New initiatives",foot_tag:"We connect people. We spark ideas. We build community.",foot_explore:"Explore",foot_join:"Join",foot_contact:"Contact",foot_final:"Everyone has something to contribute.",m_verbs:["Connect","Participate","Learn","Share","Contribute","Everyone has something to contribute"]}
 };
 const skillsList={
+ pl:["Fotografia", "Języki", "Projektowanie graficzne", "Technologia", "Sztuczna inteligencja", "Programowanie", "Muzyka", "Sport", "Gotowanie", "Wydarzenia", "Komunikacja", "Marketing", "Młodzież", "Edukacja", "Kultura", "Sztuka", "Administracja", "Media społecznościowe", "Mentoring"],
  es:["Fotografía","Idiomas","Diseño gráfico","Tecnología","Inteligencia artificial","Programación","Música","Deporte","Cocina","Eventos","Comunicación","Marketing","Jóvenes","Educación","Cultura","Arte","Administración","Redes sociales","Mentoría"],
  no:["Foto","Språk","Grafisk design","Teknologi","Kunstig intelligens","Programmering","Musikk","Sport","Matlaging","Arrangementer","Kommunikasjon","Markedsføring","Ungdom","Utdanning","Kultur","Kunst","Administrasjon","Sosiale medier","Mentoring"],
  en:["Photography","Languages","Graphic design","Technology","AI","Programming","Music","Sport","Cooking","Events","Communication","Marketing","Youth","Education","Culture","Art","Administration","Social media","Mentoring"]
 };
+Object.assign(T.es, {"act_spanish": "Español en Gjesdal 2.0", "act_salsa": "Club de salsa", "act_kizomba": "Kizomba social", "act_oriental": "Danza oriental", "act_music": "Música y movimiento", "act_cafe": "Café de idiomas", "act_childcare": "Cuidado de niños", "event_cafe": "Café de idiomas multicultural", "event_salsa": "Club de salsa en Gjesdal", "location": "Gjesdal, Noruega", "menu_label": "Menú", "email_label": "Correo electrónico", "page_title": "BidraLab — Todos tenemos algo que aportar"});
+Object.assign(T.no, {"act_spanish": "Spansk i Gjesdal 2.0", "act_salsa": "Salsaklubb", "act_kizomba": "Kizomba Social", "act_oriental": "Orientalsk dans", "act_music": "Musikk og bevegelse", "act_cafe": "Språkkafé", "act_childcare": "Barnepass", "event_cafe": "Flerkulturell språkkafé", "event_salsa": "Salsaklubb i Gjesdal", "location": "Gjesdal, Norge", "menu_label": "Meny", "email_label": "E-post", "page_title": "BidraLab — Alle har noe å bidra med"});
+Object.assign(T.en, {"act_spanish": "Spanish in Gjesdal 2.0", "act_salsa": "Salsa club", "act_kizomba": "Kizomba Social", "act_oriental": "Oriental dance", "act_music": "Music and movement", "act_cafe": "Language café", "act_childcare": "Childcare", "event_cafe": "Multicultural language café", "event_salsa": "Salsa club in Gjesdal", "location": "Gjesdal, Norway", "menu_label": "Menu", "email_label": "Email", "page_title": "BidraLab — Everyone has something to contribute"});
+Object.assign(T.pl, {"act_spanish": "Hiszpański w Gjesdal 2.0", "act_salsa": "Klub salsy", "act_kizomba": "Spotkania z kizombą", "act_oriental": "Taniec orientalny", "act_music": "Muzyka i ruch", "act_cafe": "Kawiarenka językowa", "act_childcare": "Opieka nad dziećmi", "event_cafe": "Wielokulturowa kawiarenka językowa", "event_salsa": "Klub salsy w Gjesdal", "location": "Gjesdal, Norwegia", "menu_label": "Menu", "email_label": "E-mail", "page_title": "BidraLab — Każdy z nas może coś wnieść"});
 let lang="es";
 function apply(l){lang=l;document.documentElement.lang=l;
+ document.title=T[l].page_title;
+ document.querySelector(".burger").setAttribute("aria-label",T[l].menu_label);
+ document.querySelector(".socials a:last-child").setAttribute("aria-label",T[l].email_label);
  document.querySelectorAll("[data-t]").forEach(el=>{const k=el.getAttribute("data-t");if(T[l][k]!==undefined)el.innerHTML=T[l][k];});
  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active",b.dataset.lang===l));
  buildSkills();buildMarquee();}
@@ -410,7 +422,7 @@ document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>apply(b.datas
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.1});
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 document.querySelector(".burger").onclick=()=>{const nl=document.querySelector(".navlinks");const open=nl.style.display==="flex";
- nl.style.cssText=open?"":"display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--oat);padding:20px 28px;gap:14px;border-bottom:3px solid var(--indigo)";};
+ nl.style.cssText=open?"":"display:flex;position:absolute;top:var(--header-height);left:0;right:0;flex-direction:column;background:var(--ivory);padding:20px 28px;gap:14px;border-bottom:3px solid var(--navy)";};
 apply("es");
 </script>
 </body>
