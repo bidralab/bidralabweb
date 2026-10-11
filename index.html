@@ -113,8 +113,8 @@ section.block{padding:90px 0;position:relative}
 .weave-hint{margin-top:24px;font-size:.95rem;color:rgba(250,247,242,.7)}
 .weave-count{color:var(--gold);font-family:var(--fd);font-weight:700}
 .part-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2.5px solid var(--navy);border-right:0;border-bottom:0;border-radius:20px;overflow:hidden}
-.path{border-right:2.5px solid var(--navy);border-bottom:2.5px solid var(--navy);padding:30px;cursor:pointer;transition:background .15s;background:var(--paper)}
-.path:hover{background:var(--gold)}
+.path{border-right:2.5px solid var(--navy);border-bottom:2.5px solid var(--navy);padding:30px;background:var(--paper)}
+
 .path .pico{font-family:var(--fd);font-weight:800;font-size:1.6rem;color:var(--terracotta);margin-bottom:14px}
 .path h3{font-size:1.25rem;color:var(--navy);margin-bottom:6px}
 .path p{font-size:.92rem;color:var(--ink)}
@@ -184,6 +184,14 @@ footer li a:hover{color:var(--ivory)}
 @media(max-width:440px){nav{padding:0 16px}.nav-right{gap:8px}.lang button{padding:6px 6px}.nav-right>.btn{display:none}}
 html[lang="uk"] .hero h1 .stitchword{white-space:normal;overflow-wrap:anywhere}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.construction-notice{background:var(--ivory-shade);color:var(--navy);border-bottom:1px solid var(--gold);padding:12px 0;font-size:.94rem;line-height:1.5}
+.coming-soon{display:inline-block;margin-top:14px;padding:4px 10px;border:1px solid var(--navy);border-radius:20px;background:var(--ivory-shade);color:var(--navy);font-size:.75rem;font-weight:600;line-height:1.4}
+.pending-action{display:flex;flex-direction:column;align-items:flex-start;gap:4px;font-size:.9rem;color:var(--navy)}
+.pending-action .coming-soon{margin-top:0}
+.social-pending{display:flex;flex-direction:column;align-items:center}
+.social-pending .coming-soon{background:transparent;color:var(--ivory);border-color:var(--ivory);font-size:.7rem;padding:3px 6px;margin-top:6px}
+.social-icon{width:42px;height:42px;border:2px solid var(--ivory);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
 </style>
 </head>
 <body>
@@ -211,6 +219,7 @@ html[lang="uk"] .hero h1 .stitchword{white-space:normal;overflow-wrap:anywhere}
     </div>
   </nav>
 </header>
+<aside class="construction-notice"><div class="wrap" data-t="construction_notice">Nuestra web está creciendo. Algunas funciones y enlaces estarán disponibles próximamente. Gracias por tu paciencia.</div></aside>
 <section id="home" class="hero">
   <div class="wrap hero-inner">
     <div class="reveal in">
@@ -297,12 +306,12 @@ html[lang="uk"] .hero h1 .stitchword{white-space:normal;overflow-wrap:anywhere}
       <p class="sec-p" data-t="part_p">Elige por dónde entrar. Cada camino lleva a un formulario sencillo.</p>
     </div>
     <div class="part-grid reveal">
-      <div class="path"><div class="pico">↗</div><h3 data-t="pa1_h">Participar en una actividad</h3><p data-t="pa1_p">Únete a un encuentro y conoce gente nueva.</p></div>
-      <div class="path"><div class="pico">✳</div><h3 data-t="pa2_h">Ser voluntario/a</h3><p data-t="pa2_p">Comparte tu tiempo y tus capacidades.</p></div>
-      <div class="path"><div class="pico">◆</div><h3 data-t="pa3_h">Hacerme miembro</h3><p data-t="pa3_p">Forma parte de BidraLab de forma estable.</p></div>
-      <div class="path"><div class="pico">✦</div><h3 data-t="pa4_h">Tengo una idea o proyecto</h3><p data-t="pa4_p">Cuéntanosla y la hacemos crecer.</p></div>
-      <div class="path"><div class="pico">◇</div><h3 data-t="pa5_h">Compartir conocimientos</h3><p data-t="pa5_p">Enseña algo que sabes hacer.</p></div>
-      <div class="path"><div class="pico">⬡</div><h3 data-t="pa6_h">Empresa u organización</h3><p data-t="pa6_p">Construyamos algo juntos.</p></div>
+      <div class="path"><div class="pico">↗</div><h3 data-t="pa1_h">Participar en una actividad</h3><p data-t="pa1_p">Únete a un encuentro y conoce gente nueva.</p><span class="coming-soon" data-t="coming_soon">Próximamente</span></div>
+      <div class="path"><div class="pico">✳</div><h3 data-t="pa2_h">Ser voluntario/a</h3><p data-t="pa2_p">Comparte tu tiempo y tus capacidades.</p><span class="coming-soon" data-t="coming_soon">Próximamente</span></div>
+      <div class="path"><div class="pico">◆</div><h3 data-t="pa3_h">Hacerme miembro</h3><p data-t="pa3_p">Forma parte de BidraLab de forma estable.</p><span class="coming-soon" data-t="coming_soon">Próximamente</span></div>
+      <div class="path"><div class="pico">✦</div><h3 data-t="pa4_h">Tengo una idea o proyecto</h3><p data-t="pa4_p">Cuéntanosla y la hacemos crecer.</p><span class="coming-soon" data-t="coming_soon">Próximamente</span></div>
+      <div class="path"><div class="pico">◇</div><h3 data-t="pa5_h">Compartir conocimientos</h3><p data-t="pa5_p">Enseña algo que sabes hacer.</p><span class="coming-soon" data-t="coming_soon">Próximamente</span></div>
+      <div class="path"><div class="pico">⬡</div><h3 data-t="pa6_h">Empresa u organización</h3><p data-t="pa6_p">Construyamos algo juntos.</p><span class="coming-soon" data-t="coming_soon">Próximamente</span></div>
     </div>
   </div>
 </section>
@@ -329,9 +338,9 @@ html[lang="uk"] .hero h1 .stitchword{white-space:normal;overflow-wrap:anywhere}
       <h2 class="sec-h" data-t="ev_h">Nos vemos pronto</h2>
     </div>
     <div class="reveal">
-      <div class="evt"><div class="date"><div class="d">14</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3 data-t="event_cafe">Flerkulturell språkkafé</h3><p data-t="ev1">18:00 · Gjesdal · Trae un idioma, llévate otro.</p></div><a href="#contact" class="btn alt" data-t="ev_more">Más info</a></div>
-      <div class="evt"><div class="date"><div class="d">21</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3 data-t="event_salsa">Salsaklubb i Gjesdal</h3><p data-t="ev2">20:00 · Gjesdal · Todos los niveles bienvenidos.</p></div><a href="#contact" class="btn alt" data-t="ev_more">Más info</a></div>
-      <div class="evt"><div class="date"><div class="d">28</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3 data-t="act_spanish">Spansk i Gjesdal 2.0</h3><p data-t="ev3">17:30 · Gjesdal · Español de forma cercana.</p></div><a href="#contact" class="btn alt" data-t="ev_more">Más info</a></div>
+      <div class="evt"><div class="date"><div class="d">14</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3 data-t="event_cafe">Flerkulturell språkkafé</h3><p data-t="ev1">18:00 · Gjesdal · Trae un idioma, llévate otro.</p></div><div class="pending-action"><span data-t="ev_more">Más info</span><span class="coming-soon" data-t="coming_soon">Próximamente</span></div></div>
+      <div class="evt"><div class="date"><div class="d">21</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3 data-t="event_salsa">Salsaklubb i Gjesdal</h3><p data-t="ev2">20:00 · Gjesdal · Todos los niveles bienvenidos.</p></div><div class="pending-action"><span data-t="ev_more">Más info</span><span class="coming-soon" data-t="coming_soon">Próximamente</span></div></div>
+      <div class="evt"><div class="date"><div class="d">28</div><div class="m" data-t="mon">Mar</div></div><div class="info"><h3 data-t="act_spanish">Spansk i Gjesdal 2.0</h3><p data-t="ev3">17:30 · Gjesdal · Español de forma cercana.</p></div><div class="pending-action"><span data-t="ev_more">Más info</span><span class="coming-soon" data-t="coming_soon">Próximamente</span></div></div>
     </div>
   </div>
 </section>
@@ -361,9 +370,9 @@ html[lang="uk"] .hero h1 .stitchword{white-space:normal;overflow-wrap:anywhere}
         <a href="#home" class="logo"><img src="assets/bidralab-logo.jpg" alt="BidraLab Forening" width="245" height="250"></a>
         <p data-t="foot_tag">Conectamos personas. Activamos ideas. Construimos comunidad.</p>
         <div class="socials">
-          <a href="#" aria-label="Facebook">Fb</a>
-          <a href="#" aria-label="Instagram">Ig</a>
-          <a href="#" aria-label="Email">@</a>
+          <div class="social-pending"><span class="social-icon" role="img" aria-label="Facebook">Fb</span><span class="coming-soon" data-t="coming_soon">Próximamente</span></div>
+          <div class="social-pending"><span class="social-icon" role="img" aria-label="Instagram">Ig</span><span class="coming-soon" data-t="coming_soon">Próximamente</span></div>
+          <a href="mailto:hei@bidralab.no" aria-label="Email">@</a>
         </div>
       </div>
       <div><h4 data-t="foot_explore">Explora</h4><ul>
@@ -380,7 +389,7 @@ html[lang="uk"] .hero h1 .stitchword{white-space:normal;overflow-wrap:anywhere}
       </ul></div>
       <div><h4 data-t="foot_contact">Contacto</h4><ul>
         <li><a href="mailto:hei@bidralab.no">hei@bidralab.no</a></li>
-        <li><a href="#" data-t="location">Gjesdal, Norge</a></li>
+        <li><span data-t="location">Gjesdal, Norge</span></li>
       </ul></div>
     </div>
     <div class="foot-bottom">
@@ -408,6 +417,11 @@ Object.assign(T.es, {"act_spanish": "Español en Gjesdal 2.0", "act_salsa": "Clu
 Object.assign(T.no, {"act_spanish": "Spansk i Gjesdal 2.0", "act_salsa": "Salsaklubb", "act_kizomba": "Kizomba Social", "act_oriental": "Orientalsk dans", "act_music": "Musikk og bevegelse", "act_cafe": "Språkkafé", "act_childcare": "Barnepass", "event_cafe": "Flerkulturell språkkafé", "event_salsa": "Salsaklubb i Gjesdal", "location": "Gjesdal, Norge", "menu_label": "Meny", "email_label": "E-post", "page_title": "BidraLab — Alle har noe å bidra med"});
 Object.assign(T.en, {"act_spanish": "Spanish in Gjesdal 2.0", "act_salsa": "Salsa club", "act_kizomba": "Kizomba Social", "act_oriental": "Oriental dance", "act_music": "Music and movement", "act_cafe": "Language café", "act_childcare": "Childcare", "event_cafe": "Multicultural language café", "event_salsa": "Salsa club in Gjesdal", "location": "Gjesdal, Norway", "menu_label": "Menu", "email_label": "Email", "page_title": "BidraLab — Everyone has something to contribute"});
 Object.assign(T.pl, {"act_spanish": "Hiszpański w Gjesdal 2.0", "act_salsa": "Klub salsy", "act_kizomba": "Spotkania z kizombą", "act_oriental": "Taniec orientalny", "act_music": "Muzyka i ruch", "act_cafe": "Kawiarenka językowa", "act_childcare": "Opieka nad dziećmi", "event_cafe": "Wielokulturowa kawiarenka językowa", "event_salsa": "Klub salsy w Gjesdal", "location": "Gjesdal, Norwegia", "menu_label": "Menu", "email_label": "E-mail", "page_title": "BidraLab — Każdy z nas może coś wnieść"});
+Object.assign(T.es, {"construction_notice": "Nuestra web está creciendo. Algunas funciones y enlaces estarán disponibles próximamente. Gracias por tu paciencia.", "coming_soon": "Próximamente", "part_p": "Elige cómo quieres participar. Los formularios estarán disponibles próximamente."});
+Object.assign(T.no, {"construction_notice": "Nettsiden vår er under utvikling. Noen funksjoner og lenker blir tilgjengelige snart. Takk for tålmodigheten.", "coming_soon": "Kommer snart", "part_p": "Velg hvordan du vil delta. Skjemaene blir tilgjengelige snart."});
+Object.assign(T.en, {"construction_notice": "Our website is growing. Some features and links will be available soon. Thank you for your patience.", "coming_soon": "Coming soon", "part_p": "Choose how you would like to participate. The forms will be available soon."});
+Object.assign(T.pl, {"construction_notice": "Nasza strona jest w budowie. Niektóre funkcje i linki będą dostępne wkrótce. Dziękujemy za cierpliwość.", "coming_soon": "Już wkrótce", "part_p": "Wybierz, jak chcesz dołączyć. Formularze będą dostępne wkrótce."});
+Object.assign(T.uk, {"construction_notice": "Наш сайт розвивається. Деякі функції та посилання стануть доступними незабаром. Дякуємо за терпіння.", "coming_soon": "Незабаром", "part_p": "Оберіть, як хочете долучитися. Форми стануть доступними незабаром."});
 let lang="es";
 function apply(l){lang=l;document.documentElement.lang=l;
  document.title=T[l].page_title;
