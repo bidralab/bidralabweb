@@ -11,7 +11,7 @@
 :root{
   --navy:#092b40;--navy-soft:#24495d;--terracotta:#a64b2a;--gold:#c3a064;--gold-ink:#806026;
   --ivory:#faf7f2;--ivory-shade:#eee6da;--green:#356d5b;--ink:#142f40;--paper:#fffdfa;--line:#092b40;
-  --header-height:104px;--fd:"Bricolage Grotesque",sans-serif;--fb:"Space Grotesk",sans-serif;
+  --header-height:80px;--fd:"Bricolage Grotesque",sans-serif;--fb:"Space Grotesk",sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height) + 16px)}
@@ -24,7 +24,7 @@ h1,h2,h3,h4{font-family:var(--fd);line-height:.98;letter-spacing:-.02em;font-wei
 header{position:sticky;top:0;z-index:200;background:var(--ivory);border-bottom:3px solid var(--navy)}
 nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-height);max-width:1240px;margin:0 auto;padding:0 28px}
 .logo{display:inline-flex;align-items:center;flex-shrink:0;background:#fff;border-radius:8px;overflow:hidden}
-.logo img{width:82px;height:84px;object-fit:contain}
+.wordmark{font-family:var(--fd);font-size:1.3rem;letter-spacing:.04em;color:var(--navy);background:transparent;border-radius:0}.wordmark span{color:var(--gold-ink)}
 .navlinks{display:flex;gap:24px;align-items:center;font-size:.92rem;font-weight:500}
 .navlinks a{color:var(--navy);position:relative;padding:4px 0}
 .navlinks a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--terracotta);transition:width .25s}
@@ -148,7 +148,7 @@ section.block{padding:90px 0;position:relative}
 .collab-side li::before{content:"→ ";color:var(--gold);font-weight:700}
 footer{background:var(--navy);color:var(--ivory);padding:70px 0 28px}
 .foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:48px}
-.foot-brand .logo img{width:157px;height:160px}
+
 .foot-brand p{color:rgba(250,247,242,.7);margin-top:16px;max-width:30ch;font-size:.95rem}
 footer h4{font-family:var(--fb);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 footer ul{list-style:none}
@@ -172,7 +172,7 @@ footer li a:hover{color:var(--ivory)}
   .act.big,.act.sm,.act.md{grid-column:span 12}
 }
 @media(max-width:640px){
-  :root{--header-height:96px}
+  :root{--header-height:80px}
   .navlinks{display:none}
   .burger{display:flex}
   .part-grid,.team-grid,.foot-top{grid-template-columns:1fr}
@@ -192,12 +192,29 @@ html[lang="uk"] .hero h1 .stitchword{white-space:normal;overflow-wrap:anywhere}
 .social-pending{display:flex;flex-direction:column;align-items:center}
 .social-pending .coming-soon{background:transparent;color:var(--ivory);border-color:var(--ivory);font-size:.7rem;padding:3px 6px;margin-top:6px}
 .social-icon{width:42px;height:42px;border:2px solid var(--ivory);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+
+.brand-masthead{display:flex;align-items:center;justify-content:center;gap:48px;padding:28px; background:var(--paper)}
+.official-logo{display:block;overflow:hidden;border-radius:12px;background:#fffdfa}
+.brand-masthead .official-logo{width:min(42vw,440px);flex-shrink:0}
+.official-logo img{width:100%;height:auto;object-fit:contain}
+.brand-message{color:var(--navy)}
+.brand-message p{font-size:clamp(1.1rem,2.2vw,1.75rem);line-height:1.5;max-width:24ch}
+.brand-message span{display:block;margin-top:20px;padding-top:16px;border-top:1px solid var(--gold);font-size:.9rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;line-height:1.7}
+.footer-identity{max-width:320px;background:var(--paper);padding:12px 16px 20px;border-radius:14px}
+.footer-identity .official-logo{border-radius:0}
+.footer-identity .brand-message p{color:var(--navy);font-size:1rem;line-height:1.5;margin:4px 0 0;max-width:none}
+.footer-identity .brand-message span{font-size:.8rem;letter-spacing:.12em;margin-top:12px;padding-top:12px}
+@media(max-width:640px){.brand-masthead{flex-direction:column;gap:16px;padding:16px 20px 28px}.brand-masthead .official-logo{width:min(100%,360px)}.brand-masthead .brand-message{max-width:360px;text-align:center}.brand-masthead .brand-message p{font-size:1.1rem;max-width:none}.brand-masthead .brand-message span{margin-top:12px;padding-top:12px}.footer-identity{margin:0 auto}}
 </style>
 </head>
 <body>
+<div class="brand-masthead" id="brand">
+  <a href="#home" class="official-logo"><img src="assets/bidralab-official-logo.jpg" alt="BidraLab" width="1254" height="1254" fetchpriority="high"></a>
+  <div class="brand-message" lang="en"><p>Connecting people from every corner of the world.</p><span>Together in Norway</span></div>
+</div>
 <header>
   <nav>
-    <a href="#home" class="logo"><img src="assets/bidralab-logo.jpg" alt="BidraLab Forening" width="245" height="250"></a>
+    <a href="#brand" class="logo wordmark" aria-label="BidraLab">BIDRA<span>LAB</span></a>
     <div class="navlinks">
       <a href="#about" data-t="nav_about">Sobre nosotros</a>
       <a href="#activities" data-t="nav_act">Actividades</a>
@@ -367,7 +384,10 @@ html[lang="uk"] .hero h1 .stitchword{white-space:normal;overflow-wrap:anywhere}
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <a href="#home" class="logo"><img src="assets/bidralab-logo.jpg" alt="BidraLab Forening" width="245" height="250"></a>
+        <div class="footer-identity">
+          <a href="#brand" class="official-logo"><img src="assets/bidralab-official-logo.jpg" alt="BidraLab" width="1254" height="1254" loading="lazy"></a>
+          <div class="brand-message" lang="en"><p>Connecting people from every corner of the world.</p><span>Together in Norway</span></div>
+        </div>
         <p data-t="foot_tag">Conectamos personas. Activamos ideas. Construimos comunidad.</p>
         <div class="socials">
           <div class="social-pending"><span class="social-icon" role="img" aria-label="Facebook">Fb</span><span class="coming-soon" data-t="coming_soon">Próximamente</span></div>
